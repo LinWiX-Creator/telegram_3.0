@@ -1,0 +1,27 @@
+{
+  "name": "telegram-mvp-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^36.3.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.example.telegrammvp",
+    "productName": "TelegramMVP",
+    "files": [
+      "main.js",
+      "preload.js"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
