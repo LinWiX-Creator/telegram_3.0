@@ -16,4 +16,4 @@ function send() {
   const msg = document.getElementById("msg").value;
   socket.emit("send_message", msg);
 }
- 
+  
