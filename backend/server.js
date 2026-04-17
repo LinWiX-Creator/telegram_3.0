@@ -15,11 +15,16 @@ const io = new Server(server, {
 
 let users = {};
 
+function broadcastUsers() {
+  io.emit("users_list", Object.values(users));
+}
+
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 
   socket.on("join", (username) => {
     users[socket.id] = username;
+    broadcastUsers();
   });
 
   socket.on("send_message", (message) => {
@@ -41,6 +46,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     delete users[socket.id];
+    broadcastUsers();
   });
 });
 
